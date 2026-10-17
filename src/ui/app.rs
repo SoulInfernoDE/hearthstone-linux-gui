@@ -1,9 +1,9 @@
 use super::{
     auth, browser,
     components::{
-        embedded_image, preferences_menu, ActionBar, ActionBarInput, ActionBarOutput,
-        ActionBarState, InstallAction, InstallState, LaunchState, LoginState, SettingsOutput,
-        SettingsPanel, SettingsPanelInput, StatusPanel, StatusPanelInput, StatusPanelState,
+        preferences_menu, ActionBar, ActionBarInput, ActionBarOutput, ActionBarState,
+        InstallAction, InstallState, LaunchState, LoginState, SettingsOutput, SettingsPanel,
+        SettingsPanelInput, StatusPanel, StatusPanelInput, StatusPanelState,
     },
     game_settings, status,
 };
@@ -355,8 +355,7 @@ impl SimpleComponent for MainWindow {
             update: None,
         };
 
-        let logo_image = embedded_image(include_bytes!("../../data/icons/logo.png"));
-        logo_image.set_pixel_size(184);
+        let logo_image = super::logo::widget(&model.paths.cache_dir);
         logo_image.set_halign(gtk::Align::Center);
         // Room on both sides keeps the corner buttons outside the picture.
         logo_image.set_margin_start(48);
